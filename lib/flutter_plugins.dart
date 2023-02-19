@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,24 +13,36 @@ class FlutterPlugins {
 
   Future<String?> sendForwardNotification(
       FlutterPluginsLocalNotification notification) async {
-    return await _channel.invokeMethod(
-        "sendForwardNotification", notification.toJson());
+    if (Platform.isAndroid) {
+      return await _channel.invokeMethod(
+          "sendForwardNotification", notification.toJson());
+    }
+    return null;
   }
 
   Future<String?> updateForwardNotification(
       FlutterPluginsLocalNotification notification) async {
-    return await _channel.invokeMethod(
-        "updateForwardNotification", notification.toJson());
+    if (Platform.isAndroid) {
+      return await _channel.invokeMethod(
+          "updateForwardNotification", notification.toJson());
+    }
+    return null;
   }
 
   Future<String?> stopForwardNotification() async {
-    return await _channel.invokeMethod("stopForwardNotification");
+    if (Platform.isAndroid) {
+      return await _channel.invokeMethod("stopForwardNotification");
+    }
+    return null;
   }
 
   Future<bool?> sendNotification(
       FlutterPluginsLocalNotification notification) async {
-    return await _channel.invokeMethod(
-        "sendNotification", notification.toJson());
+    if (Platform.isAndroid) {
+      return await _channel.invokeMethod(
+          "sendNotification", notification.toJson());
+    }
+    return null;
   }
 
   Future<bool?> initialize({ValueChanged<String>? onSelectNotification}) async {
