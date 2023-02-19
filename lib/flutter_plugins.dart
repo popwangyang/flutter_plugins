@@ -11,13 +11,13 @@ class FlutterPlugins {
   ValueChanged<String>? _onSelectNotification;
 
   Future<String?> sendForwardNotification(
-      LocalNotification notification) async {
+      FlutterPluginsLocalNotification notification) async {
     return await _channel.invokeMethod(
         "sendForwardNotification", notification.toJson());
   }
 
   Future<String?> updateForwardNotification(
-      LocalNotification notification) async {
+      FlutterPluginsLocalNotification notification) async {
     return await _channel.invokeMethod(
         "updateForwardNotification", notification.toJson());
   }
@@ -26,7 +26,8 @@ class FlutterPlugins {
     return await _channel.invokeMethod("stopForwardNotification");
   }
 
-  Future<bool?> sendNotification(LocalNotification notification) async {
+  Future<bool?> sendNotification(
+      FlutterPluginsLocalNotification notification) async {
     return await _channel.invokeMethod(
         "sendNotification", notification.toJson());
   }
