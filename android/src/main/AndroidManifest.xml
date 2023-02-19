@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.flutter_plugins">
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <application>
+        <service
+            android:name=".ForegroundService"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="Instantiatable"></service>
+    </application>
+
+</manifest>
