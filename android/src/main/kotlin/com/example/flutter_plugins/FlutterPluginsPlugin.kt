@@ -124,9 +124,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
     requestCode: Int,
     permissions: Array<out String>?,
     grantResults: IntArray?
-  ): Boolean {
-    TODO("Not yet implemented")
-  }
+  ): Boolean {}
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     binding.addOnNewIntentListener(this);
