@@ -39,28 +39,31 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 child: const Text("发送本地通知"),
                 onPressed: () {
-                  _flutterPlugins.sendNotification(LocalNotification(
-                      title: "郭支书了-业务员",
-                      content: "你有一条订单2023473680910审核不通过请查看原因 >>",
-                      payload: "928929992992"));
+                  _flutterPlugins.sendNotification(
+                      FlutterPluginsLocalNotification(
+                          title: "郭支书了-业务员",
+                          content: "你有一条订单2023473680910审核不通过请查看原因 >>",
+                          payload: "928929992992"));
                 },
               ),
               ElevatedButton(
                 child: const Text("创建service通知"),
                 onPressed: () {
-                  _flutterPlugins.sendForwardNotification(LocalNotification(
-                      title: "郭支书了-业务员",
-                      content: "你现在正在拜访“小林超市”，请不要忘记里店打卡！！",
-                      payload: "928929992992"));
+                  _flutterPlugins.sendForwardNotification(
+                      FlutterPluginsLocalNotification(
+                          title: "郭支书了-业务员",
+                          content: "你现在正在拜访“小林超市”，请不要忘记里店打卡！！",
+                          payload: "928929992992"));
                 },
               ),
               ElevatedButton(
                 child: const Text("更新service通知"),
                 onPressed: () {
-                  _flutterPlugins.updateForwardNotification(LocalNotification(
-                      title: "郭支书了-业务员",
-                      content: "你现在正在拜访“洪河超市”，请不要忘记里店打卡！！",
-                      payload: "928929992992"));
+                  _flutterPlugins.updateForwardNotification(
+                      FlutterPluginsLocalNotification(
+                          title: "郭支书了-业务员",
+                          content: "你现在正在拜访“洪河超市”，请不要忘记里店打卡！！",
+                          payload: "928929992992"));
                 },
               ),
               ElevatedButton(
