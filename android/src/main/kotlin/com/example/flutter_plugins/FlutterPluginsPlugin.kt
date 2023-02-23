@@ -22,7 +22,8 @@ import io.flutter.plugin.common.PluginRegistry
 const val TGA = "flutterPluginsLog1"
 
 /** FlutterPluginsPlugin */
-class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.NewIntentListener
+class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.NewIntentListener,
+  PluginRegistry.RequestPermissionsResultListener,
   ActivityAware {
 
   private lateinit var channel : MethodChannel
@@ -117,6 +118,14 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
       return false
     }
     return  false
+  }
+
+  override fun onRequestPermissionsResult(
+    requestCode: Int,
+    permissions: Array<out String>?,
+    grantResults: IntArray?
+  ): Boolean {
+    return false;
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
