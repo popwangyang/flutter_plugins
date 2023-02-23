@@ -125,7 +125,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
     permissions: Array<out String>?,
     grantResults: IntArray?
   ): Boolean {
-    TODO("Not yet implemented")
+    return false;
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
