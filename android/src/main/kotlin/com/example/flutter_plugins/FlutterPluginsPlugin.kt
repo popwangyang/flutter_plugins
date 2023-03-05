@@ -86,7 +86,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
           notification = null
         }
       "initEMASTLog" -> {
-        emasTlog = EmasTlog(context, call)
+//        emasTlog = EmasTlog(context, call)
         result.success(true)
       }
       "printInEMASLog" -> {
