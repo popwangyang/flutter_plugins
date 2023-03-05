@@ -72,6 +72,17 @@ class _MyAppState extends State<MyApp> {
                   _flutterPlugins.stopForwardNotification();
                 },
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    _flutterPlugins.initEMASTlog(FlutterPluginsEMASTlogConfig(
+                        appKey: "333771694",
+                        appSecret: "b6ab2f6ec5834a8792e967d8a2f737a0",
+                        rsaPublicKey:
+                            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDkWNSMZHO5BjFgpIa6BduaOMJNX1nNch+3wxmr8+yR5fPLJHUkNcnIIf1Sb1qTz/LmEmZK5U85BEJ4VcAoOerXvlb+Cjt0vhsbZ7IdMPgm/VNNf0/cJySiQnS8oRTKtKrv6E3+9eIAgzVOwQDR8P3DUh7O4dbcZJB0eOHJ93j+VwIDAQAB",
+                        channel: "Unkonw",
+                        openDebug: true));
+                  },
+                  child: const Text("创建EMASTlog"))
             ],
           ),
         ),

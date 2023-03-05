@@ -51,6 +51,13 @@ class FlutterPlugins {
     return null;
   }
 
+  Future<bool?> initEMASTlog(FlutterPluginsEMASTlogConfig config) async {
+    if (Platform.isAndroid) {
+      return await _channel.invokeMethod("initEMASTLog", config.toJson());
+    }
+    return null;
+  }
+
   Future<void> _handleMethod(MethodCall call) async {
     switch (call.method) {
       case 'selectNotification':
