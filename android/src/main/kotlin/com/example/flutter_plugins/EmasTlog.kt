@@ -20,7 +20,7 @@ class EmasTlog(@NonNull val context: Context, @NonNull val call: MethodCall) {
         val channel = call.argument<String>("channel")
         val userNick = call.argument<String?>("userNick")
         val type = call.argument<String?>("type")
-        val debug = call.argument<Boolean>("debug")
+        val openDebug = call.argument<Boolean>("openDebug")
         val config = AliHaConfig()
         config.appKey = appKey; //配置项：appkey
         config.appVersion = getVersionName(); //配置项：应用的版本号
@@ -32,7 +32,7 @@ class EmasTlog(@NonNull val context: Context, @NonNull val call: MethodCall) {
         config.isAliyunos = false; //配置项：是否为yunos
         config.rsaPublicKey = rsaPublicKey; //配置项：tlog公钥
         AliHaAdapter.getInstance().addPlugin(Plugin.tlog);
-        AliHaAdapter.getInstance().openDebug(debug);
+        AliHaAdapter.getInstance().openDebug(openDebug);
         AliHaAdapter.getInstance().start(config);
         if(type!=null){
             when (type) {
