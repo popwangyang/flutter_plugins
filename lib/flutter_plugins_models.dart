@@ -80,3 +80,20 @@ class FlutterPluginsEMASTlogConfig {
 /// WARN：可拉取WARN/ERROR级别的日志。
 /// ERROR：可拉取ERROR级别的日志。
 enum EMASTlogType { VERBOSE, DEBUG, INFO, WARN, ERROR }
+
+class EMASTlogger {
+  final EMASTlogType type;
+  final String module;
+  final String message;
+  final String tag;
+
+  EMASTlogger(
+      {required this.type,
+      required this.tag,
+      required this.message,
+      required this.module});
+
+  toJson() {
+    return {"message": message, "module": module, "tag": tag};
+  }
+}

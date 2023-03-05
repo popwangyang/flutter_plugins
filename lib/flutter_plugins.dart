@@ -51,6 +51,36 @@ class FlutterPlugins {
     return null;
   }
 
+  printInEMASLog(EMASTlogger logger) {
+    String method = "log";
+    switch (logger.type) {
+      case EMASTlogType.DEBUG:
+        method += "d";
+        break;
+      case EMASTlogType.ERROR:
+        method += "e";
+        break;
+      case EMASTlogType.INFO:
+        method += "i";
+        break;
+      case EMASTlogType.VERBOSE:
+        method += "v";
+        break;
+      case EMASTlogType.WARN:
+        method += "w";
+        break;
+    }
+    _channel.invokeMethod(method, logger.toJson());
+  }
+
+  void commentEMASlog() {
+    _channel.invokeMethod("commentEMASLog");
+  }
+
+  void updateNickName(String name) {
+    _channel.invokeMethod("updateNickNameEMASLog", {"name": name});
+  }
+
   Future<bool?> initEMASTlog(FlutterPluginsEMASTlogConfig config) async {
     if (Platform.isAndroid) {
       return await _channel.invokeMethod("initEMASTLog", config.toJson());

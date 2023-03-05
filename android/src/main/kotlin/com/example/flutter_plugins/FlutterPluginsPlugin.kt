@@ -56,17 +56,17 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     Log.d(TGA, call.method)
-    when(call.method) {
-      "sendNotification" -> localNotification.sendNotification(call, result, "important") {
+    when {
+      call.method == "sendNotification" -> localNotification.sendNotification(call, result, "important") {
         id , notification, manager -> manager.notify(id, notification)
       }
-      "sendForwardNotification" -> localNotification.sendNotification(call, result, "important") {
+      call.method == "sendForwardNotification" -> localNotification.sendNotification(call, result, "important") {
           id , n, _ ->
         notificationId = id
         notification = n
         bindService()
       }
-      "updateForwardNotification" -> localNotification.sendNotification(call, result, "important") {
+      call.method == "updateForwardNotification" -> localNotification.sendNotification(call, result, "important") {
           id , n, _ ->
         if(notification == null) {
           notificationId = id
@@ -77,7 +77,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
           notificationBinder?.updateForegroundService(notification!!)
         }
       }
-      "stopForwardNotification" ->
+      call.method == "stopForwardNotification" ->
         if(notificationBinder != null) {
           notificationBinder?.stopForegroundService()
           context.unbindService(connection)
@@ -85,20 +85,22 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
           notificationId = null
           notification = null
         }
-      "initEMASTLog" -> {
+      call.method == "initEMASTLog" -> {
         emasTlog = EmasTlog(context, call)
         result.success(true)
       }
-      "printInEMASLog" -> {
+      call.method == "printInEMASLog" -> {
         emasTlog?.log(call, result)
       }
-      "updateNickNameEMASLog" -> {
+      call.method == "updateNickNameEMASLog" -> {
         val name = call.argument<String?>("name")
         emasTlog?.updateNickName(name)
       }
-      "commentEMASLog" -> {
+      call.method == "commentEMASLog" -> {
         emasTlog?.comment()
       }
+      call.method.startsWith("log") -> emasTlog?.log(call, result)
+
       else ->  result.notImplemented()
     }
   }

@@ -80,9 +80,25 @@ class _MyAppState extends State<MyApp> {
                         rsaPublicKey:
                             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDkWNSMZHO5BjFgpIa6BduaOMJNX1nNch+3wxmr8+yR5fPLJHUkNcnIIf1Sb1qTz/LmEmZK5U85BEJ4VcAoOerXvlb+Cjt0vhsbZ7IdMPgm/VNNf0/cJySiQnS8oRTKtKrv6E3+9eIAgzVOwQDR8P3DUh7O4dbcZJB0eOHJ93j+VwIDAQAB",
                         channel: "Unkonw",
+                        type: EMASTlogType.VERBOSE,
+                        userNick: "王二哥",
                         openDebug: true));
                   },
-                  child: const Text("创建EMASTlog"))
+                  child: const Text("创建EMASTlog")),
+              ElevatedButton(
+                  onPressed: () {
+                    _flutterPlugins.printInEMASLog(EMASTlogger(
+                        type: EMASTlogType.ERROR,
+                        tag: "ref",
+                        message: "数量生生世世生生世世是生生世世",
+                        module: "订单模块日志"));
+                  },
+                  child: const Text("打印日志")),
+              ElevatedButton(
+                  onPressed: () {
+                    _flutterPlugins.commentEMASlog();
+                  },
+                  child: const Text("上报日志"))
             ],
           ),
         ),
