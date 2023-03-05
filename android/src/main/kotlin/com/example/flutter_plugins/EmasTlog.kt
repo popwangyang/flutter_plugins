@@ -12,23 +12,30 @@ import com.alibaba.ha.adapter.service.tlog.TLogService
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel.Result
 
-class EmasTlog(@NonNull val context: Context, @NonNull val emasTlogParams: EmasTlogParams) {
+class EmasTlog(@NonNull val context: Context, @NonNull val call: MethodCall) {
     init {
+        val appKey = call.argument<String>("appKey")
+        val appSecret = call.argument<String>("appSecret")
+        val rsaPublicKey = call.argument<String>("rsaPublicKey")
+        val channel = call.argument<String>("channel")
+        val userNick = call.argument<String?>("userNick")
+        val type = call.argument<String?>("type")
+        val debug = call.argument<Boolean>("debug")
         val config = AliHaConfig()
-        config.appKey = emasTlogParams.appKey; //配置项：appkey
+        config.appKey = appKey; //配置项：appkey
         config.appVersion = getVersionName(); //配置项：应用的版本号
-        config.appSecret = emasTlogParams.appSecret; //配置项：appsecret
-        config.channel = emasTlogParams.channel; //配置项：应用的渠道号标记，自定义
-        config.userNick = emasTlogParams.userNick; //配置项：用户的昵称
+        config.appSecret = appSecret; //配置项：appsecret
+        config.channel = channel; //配置项：应用的渠道号标记，自定义
+        config.userNick = userNick; //配置项：用户的昵称
         config.application = context.applicationContext as Application; //配置项：应用指针
         config.context = context.applicationContext; //配置项：应用上下文
         config.isAliyunos = false; //配置项：是否为yunos
-        config.rsaPublicKey = emasTlogParams.rsaPublicKey; //配置项：tlog公钥
+        config.rsaPublicKey = rsaPublicKey; //配置项：tlog公钥
         AliHaAdapter.getInstance().addPlugin(Plugin.tlog);
-        AliHaAdapter.getInstance().openDebug(emasTlogParams.openDebug);
+        AliHaAdapter.getInstance().openDebug(debug);
         AliHaAdapter.getInstance().start(config);
-        if(emasTlogParams.type!=null){
-            when (emasTlogParams.type) {
+        if(type!=null){
+            when (type) {
                 "v"->{
                     TLogService.updateLogLevel(TLogLevel.VERBOSE) //配置项：控制台可拉取的日志级别
                 }

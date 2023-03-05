@@ -89,16 +89,8 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
           notification = null
         }
       "initEMASTLog" -> {
-        val appKey = call.argument<String>("appKey")
-        val appSecret = call.argument<String>("appSecret")
-        val rsaPublicKey = call.argument<String>("rsaPublicKey")
-        val channel = call.argument<String>("channel")
-        val userNick = call.argument<String?>("userNick")
-        val type = call.argument<String?>("type")
-        val debug = call.argument<Boolean>("debug")
-        val emasTlogParams = EmasTlogParams(appKey!!, appSecret!!, userNick, rsaPublicKey!!, channel!!, debug!!, type)
-        emasTlog = EmasTlog(context, emasTlogParams)
-        result.success("初始化成功")
+        emasTlog = EmasTlog(context, call)
+        result.success(true)
       }
       "printInEMASLog" -> {
         emasTlog?.log(call, result)
