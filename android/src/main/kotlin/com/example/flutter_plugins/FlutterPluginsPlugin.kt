@@ -33,6 +33,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
   private var notificationBinder: ForegroundService.NotificationBinder? = null
   private var notificationId: Int? = 0
   private var notification: Notification? = null
+  private var emasTlog: EmasTlog? = null
   private val connection = object : ServiceConnection {
 
     override fun onServiceConnected(p0: ComponentName, p1: IBinder) {
@@ -87,7 +88,28 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
           notificationId = null
           notification = null
         }
-
+      "initEMASTLog" -> {
+        val appKey = call.argument<String>("appKey")
+        val appSecret = call.argument<String>("appSecret")
+        val rsaPublicKey = call.argument<String>("rsaPublicKey")
+        val channel = call.argument<String>("channel")
+        val userNick = call.argument<String?>("userNick")
+        val type = call.argument<String?>("type")
+        val debug = call.argument<Boolean>("debug")
+        val emasTlogParams = EmasTlogParams(appKey!!, appSecret!!, userNick, rsaPublicKey!!, channel!!, debug!!, type)
+        emasTlog = EmasTlog(context, emasTlogParams)
+        result.success("初始化成功")
+      }
+      "printInEMASLog" -> {
+        emasTlog?.log(call, result)
+      }
+      "updateNickNameEMASLog" -> {
+        val name = call.argument<String?>("name")
+        emasTlog?.updateNickName(name)
+      }
+      "commentEMASLog" -> {
+        emasTlog?.comment()
+      }
       else ->  result.notImplemented()
     }
   }
@@ -125,7 +147,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
     permissions: Array<out String>?,
     grantResults: IntArray?
   ): Boolean {
-    TODO("Not yet implemented")
+    return false
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
