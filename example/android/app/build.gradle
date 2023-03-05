@@ -48,6 +48,10 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        ndk {
+            abiFilters 'armeabi'    //配置项。可选取值：armeabi-v7a/arm64-v8a/x86/x86_64
+        }
+
     }
 
     buildTypes {

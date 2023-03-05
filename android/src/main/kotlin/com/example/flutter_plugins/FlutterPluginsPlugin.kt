@@ -1,11 +1,8 @@
 package com.example.flutter_plugins
 
 import android.app.Activity
-import android.app.Application
-import android.app.Application.ActivityLifecycleCallbacks
 import android.app.Notification
 import android.content.*
-import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -139,7 +136,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
     permissions: Array<out String>?,
     grantResults: IntArray?
   ): Boolean {
-    return false
+    return true
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
