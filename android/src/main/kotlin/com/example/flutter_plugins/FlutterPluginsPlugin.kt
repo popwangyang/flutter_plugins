@@ -14,6 +14,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
+import java.lang.NullPointerException
 
 
 const val TGA = "flutterPluginsLog1"
@@ -98,6 +99,10 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
       }
       call.method == "commentEMASLog" -> {
         emasTlog?.comment()
+      }
+      call.method == "pointerException" -> {
+        Log.d(TGA, "pointerException")
+        throw  NullPointerException()
       }
       call.method.startsWith("log") -> emasTlog?.log(call, result)
 

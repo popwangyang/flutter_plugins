@@ -65,4 +65,5 @@ dependencies {
     implementation('com.aliyun.ams:alicloud-android-tlog:1.1.4.4-open@aar') {
         transitive=true
     }
+    implementation('com.aliyun.ams:alicloud-android-ha-crashreporter:1.2.5')
 }

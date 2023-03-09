@@ -32,6 +32,7 @@ class EmasTlog(@NonNull val context: Context, @NonNull val call: MethodCall) {
         config.isAliyunos = false; //配置项：是否为yunos
         config.rsaPublicKey = rsaPublicKey; //配置项：tlog公钥
         AliHaAdapter.getInstance().addPlugin(Plugin.tlog);
+        AliHaAdapter.getInstance().addPlugin(Plugin.crashreporter)
         AliHaAdapter.getInstance().openDebug(openDebug);
         AliHaAdapter.getInstance().start(config);
         if(type!=null){

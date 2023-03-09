@@ -88,6 +88,10 @@ class FlutterPlugins {
     return null;
   }
 
+  void pointerException() {
+    _channel.invokeMethod("pointerException");
+  }
+
   Future<void> _handleMethod(MethodCall call) async {
     switch (call.method) {
       case 'selectNotification':

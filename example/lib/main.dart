@@ -98,7 +98,12 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () {
                     _flutterPlugins.commentEMASlog();
                   },
-                  child: const Text("上报日志"))
+                  child: const Text("上报日志")),
+              ElevatedButton(
+                  onPressed: () {
+                    _flutterPlugins.pointerException();
+                  },
+                  child: const Text("程序崩溃"))
             ],
           ),
         ),
