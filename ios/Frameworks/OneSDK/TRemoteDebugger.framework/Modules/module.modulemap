@@ -1,0 +1,6 @@
+framework module TRemoteDebugger {
+  umbrella header "TLogFactory.h"
+  
+  export *
+  module * { export * }
+}

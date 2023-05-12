@@ -38,11 +38,8 @@ class FlutterPlugins {
 
   Future<bool?> sendNotification(
       FlutterPluginsLocalNotification notification) async {
-    if (Platform.isAndroid) {
-      return await _channel.invokeMethod(
-          "sendNotification", notification.toJson());
-    }
-    return null;
+    return await _channel.invokeMethod(
+        "sendNotification", notification.toJson());
   }
 
   Future<bool?> initialize({ValueChanged<String>? onSelectNotification}) async {
