@@ -1,0 +1,6 @@
+framework module AlicloudAPM {
+  umbrella header "AlicloudAPMProvider.h"
+
+  export *
+  module * { export * }
+}

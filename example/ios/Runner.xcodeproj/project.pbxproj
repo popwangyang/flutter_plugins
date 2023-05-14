@@ -14,23 +14,10 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		E3DBA5E92A0E47A600AF30E2 /* AlicloudTLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3DBA5E72A0E478300AF30E2 /* AlicloudTLog.framework */; };
-		E3DBA5EA2A0E47A600AF30E2 /* AlicloudTLog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E3DBA5E72A0E478300AF30E2 /* AlicloudTLog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC131FFF2A10FD6E0063D198 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BC131FF92A10F6A30063D198 /* libc++.tbd */; };
+		BC1320002A10FD7B0063D198 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BC131FFB2A10F6C70063D198 /* libresolv.tbd */; };
+		BC1320012A10FD850063D198 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC131FFD2A10F6D20063D198 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E3DBA5EA2A0E47A600AF30E2 /* AlicloudTLog.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
@@ -49,8 +36,11 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3DBA5E12A0E46C000AF30E2 /* OneSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OneSDK; path = ../../ios/Frameworks/OneSDK; sourceTree = "<group>"; };
-		E3DBA5E32A0E46DB00AF30E2 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Frameworks; path = ../../ios/Frameworks; sourceTree = "<group>"; };
+		BC131FF32A10F1890063D198 /* AlicloudHAUtil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlicloudHAUtil.framework; path = ../../ios/Frameworks/OneSDK/AlicloudHAUtil.framework; sourceTree = "<group>"; };
+		BC131FF62A10F2C60063D198 /* AliHACore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliHACore.framework; path = ../../ios/Frameworks/OneSDK/AliHACore.framework; sourceTree = "<group>"; };
+		BC131FF92A10F6A30063D198 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		BC131FFB2A10F6C70063D198 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		BC131FFD2A10F6D20063D198 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E3DBA5E52A0E475D00AF30E2 /* AliAPMInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AliAPMInterface.framework; path = ../../ios/Frameworks/OneSDK/AliAPMInterface.framework; sourceTree = "<group>"; };
 		E3DBA5E72A0E478300AF30E2 /* AlicloudTLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlicloudTLog.framework; path = ../../ios/Frameworks/OneSDK/AlicloudTLog.framework; sourceTree = "<group>"; };
 		FD085F7C33D093F7597A2DFA /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -61,8 +51,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1320012A10FD850063D198 /* SystemConfiguration.framework in Frameworks */,
+				BC1320002A10FD7B0063D198 /* libresolv.tbd in Frameworks */,
+				BC131FFF2A10FD6E0063D198 /* libc++.tbd in Frameworks */,
 				365A62E85DB13440C5633138 /* Pods_Runner.framework in Frameworks */,
-				E3DBA5E92A0E47A600AF30E2 /* AlicloudTLog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,10 +64,13 @@
 		6CFA872F28FCDA566119C780 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC131FFD2A10F6D20063D198 /* SystemConfiguration.framework */,
+				BC131FFB2A10F6C70063D198 /* libresolv.tbd */,
+				BC131FF92A10F6A30063D198 /* libc++.tbd */,
+				BC131FF62A10F2C60063D198 /* AliHACore.framework */,
+				BC131FF32A10F1890063D198 /* AlicloudHAUtil.framework */,
 				E3DBA5E72A0E478300AF30E2 /* AlicloudTLog.framework */,
 				E3DBA5E52A0E475D00AF30E2 /* AliAPMInterface.framework */,
-				E3DBA5E32A0E46DB00AF30E2 /* Frameworks */,
-				E3DBA5E12A0E46C000AF30E2 /* OneSDK */,
 				24975407F902B7503848439A /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -148,7 +143,6 @@
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				B1F9648DD77F5E66D6E53779 /* [CP] Embed Pods Frameworks */,
 			);
@@ -370,6 +364,7 @@
 				DEVELOPMENT_TEAM = 9TWSH9WL6N;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +426,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -499,6 +494,7 @@
 				DEVELOPMENT_TEAM = 9TWSH9WL6N;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,6 +518,7 @@
 				DEVELOPMENT_TEAM = 9TWSH9WL6N;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

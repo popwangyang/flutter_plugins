@@ -79,10 +79,7 @@ class FlutterPlugins {
   }
 
   Future<bool?> initEMASTlog(FlutterPluginsEMASTlogConfig config) async {
-    if (Platform.isAndroid) {
-      return await _channel.invokeMethod("initEMASTLog", config.toJson());
-    }
-    return null;
+    return await _channel.invokeMethod("initEMASTLog", config.toJson());
   }
 
   void pointerException() {

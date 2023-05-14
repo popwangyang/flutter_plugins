@@ -1,6 +1,7 @@
 import Flutter
 import UIKit
-import AlicloudUtils
+import AliAPMInterface
+//import AlicloudTLog
 
 public class SwiftFlutterPluginsPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -14,13 +15,40 @@ public class SwiftFlutterPluginsPlugin: NSObject, FlutterPlugin {
       let method = call.method;
       switch method {
       case "sendNotification":
-          print("ppppppp")
-          AlicloudReport()
+          print("sendNotification")
+          
+          let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+          let appBundleId = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String
+          
+          if let tem = appVersion, let tam = appBundleId {
+              print(tem, tam)
+          }
+         
+          
           result(Bool(true))
-      case "koo":
+          
+      case "initEMASTLog":
           print("lsllsl")
       default:
           print("lsllsll")
       }
   }
 }
+
+func goo(params: inout Int){
+    params+=1;
+}
+
+//func initEMASTLog(appKey: String, secret: String, tlogRsaSecret: String, appVersion: String, channel: String, nick: String) -> Void {
+//    
+//    let emasLog = AlicloudTLog.AlicloudTlogProvider.init()
+//    
+//    emasLog.initWithAppKey(appKey, secret: secret, tlogRsaSecret: tlogRsaSecret, appVersion: appVersion, channel: channel, nick: nick)
+//    
+//    
+//    
+//    
+//    
+//    
+//}
+
