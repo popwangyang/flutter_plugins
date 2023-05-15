@@ -1,6 +1,0 @@
-framework module AlicloudTLog {
-  umbrella header "AlicloudTLogProvider.h"
-
-  export *
-  module * { export * }
-}

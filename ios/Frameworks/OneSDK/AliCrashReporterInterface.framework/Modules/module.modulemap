@@ -1,6 +1,0 @@
-framework module AliCrashReporterInterface {
-    umbrella header "AliCrashReporterInterfaceHeader.h"
-    
-    export *
-    module * { export * }
-}

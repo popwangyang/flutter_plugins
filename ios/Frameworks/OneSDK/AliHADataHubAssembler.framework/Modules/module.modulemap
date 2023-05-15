@@ -1,6 +1,0 @@
-framework module AliHADataHubAssembler {
-  umbrella header "AliHADataHubAssembler.h"
-
-  export *
-  module * { export * }
-}

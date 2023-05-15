@@ -1,6 +1,0 @@
-framework module AlicloudSettingService {
-  umbrella header "AlicloudSettingService.h"
-
-  export *
-  module * { export * }
-}
