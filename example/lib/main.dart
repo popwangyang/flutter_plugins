@@ -76,9 +76,13 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () {
                     _flutterPlugins.initEMASTlog(FlutterPluginsEMASTlogConfig(
                         appKey: "333771694",
+                        appKeyIos: "333849929",
                         appSecret: "b6ab2f6ec5834a8792e967d8a2f737a0",
+                        appSecretIos: "49e27a56ac084a3ea7ea4e381c1c9706",
                         rsaPublicKey:
                             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDkWNSMZHO5BjFgpIa6BduaOMJNX1nNch+3wxmr8+yR5fPLJHUkNcnIIf1Sb1qTz/LmEmZK5U85BEJ4VcAoOerXvlb+Cjt0vhsbZ7IdMPgm/VNNf0/cJySiQnS8oRTKtKrv6E3+9eIAgzVOwQDR8P3DUh7O4dbcZJB0eOHJ93j+VwIDAQAB",
+                        rsaPublicKeyIos:
+                            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBFiSrfIadL4zgi4+O5OevcyktsbdAL9tIBRUl8pqEPv3KsyyaXb0LF1b8f4uud7V0lJblCEspiu8zS956i4eel8shBy939Vdc7gzoEHNaByW2q3EafhE6cKkCXBxdbwKjqc0noO9XS4WsjJrOnbbcFYK2LCDQwF4aoCKGZknMkwIDAQAB",
                         channel: "Unkonw",
                         type: EMASTlogType.VERBOSE,
                         userNick: "王二哥",

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 /// 前台通知结构
 /// title：通知的标题
 /// content：通知内容
@@ -28,6 +30,9 @@ class FlutterPluginsEMASTlogConfig {
   final String appKey;
   final String appSecret;
   final String rsaPublicKey;
+  final String appKeyIos;
+  final String appSecretIos;
+  final String rsaPublicKeyIos;
   final String channel;
   final bool openDebug;
   final String? userNick;
@@ -35,8 +40,11 @@ class FlutterPluginsEMASTlogConfig {
 
   FlutterPluginsEMASTlogConfig(
       {required this.appKey,
+      required this.appKeyIos,
       required this.appSecret,
+      required this.appSecretIos,
       required this.rsaPublicKey,
+      required this.rsaPublicKeyIos,
       required this.channel,
       required this.openDebug,
       this.userNick,
@@ -62,15 +70,28 @@ class FlutterPluginsEMASTlogConfig {
         break;
       default:
     }
-    return {
-      "appKey": appKey,
-      "appSecret": appSecret,
-      "rsaPublicKey": rsaPublicKey,
-      "channel": channel,
-      "openDebug": openDebug,
-      "userNick": userNick,
-      "type": _type
-    };
+
+    if (Platform.isAndroid) {
+      return {
+        "appKey": appKey,
+        "appSecret": appSecret,
+        "rsaPublicKey": rsaPublicKey,
+        "channel": channel,
+        "openDebug": openDebug,
+        "userNick": userNick,
+        "type": _type
+      };
+    } else {
+      return {
+        "appKeyIos": appKeyIos,
+        "appSecretIos": appSecretIos,
+        "rsaPublicKeyIos": rsaPublicKeyIos,
+        "channel": channel,
+        "openDebug": openDebug,
+        "userNick": userNick,
+        "type": _type
+      };
+    }
   }
 }
 
