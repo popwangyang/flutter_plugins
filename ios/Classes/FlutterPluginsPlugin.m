@@ -25,17 +25,17 @@
     
       NSLog(@"message: %@",message);
       NSLog(@"module: %@",module);
-      NSLog(@"message: %@",message);
+      NSLog(@"method: %@",call.method);
 
       if ([@"getPlatformVersion" isEqualToString:call.method]) {
         result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
 
       }else if([@"logv" isEqualToString:call.method]){
         [log debug:message];
-
+        NSLog(@"logd打印: %@",message);
       }else if([@"logd" isEqualToString:call.method]){
         [log debug:message];
-
+        NSLog(@"logd打印: %@",message);
       }else if([@"loge" isEqualToString:call.method]){
         [log error:message];
 
@@ -44,7 +44,7 @@
 
       }else if([@"logi" isEqualToString:call.method]){
         [log info:message];
-
+        NSLog(@"logi打印: %@",message);
       }else if([@"commentEMASLog" isEqualToString:call.method]){ // 主动上传日志
         [AlicloudTlogProvider uploadTLog:@"COMMENT"];
 
@@ -92,7 +92,7 @@
          }else if([type isEqualToString:@"e"]){
              logLevel = TLogFlagError;
          }else{
-             logLevel = TLogFlagDebug; // i
+             logLevel = TLogLevelDebug; // d
          }
          [TRDManagerService updateLogLevel:logLevel];
 
