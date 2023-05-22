@@ -107,7 +107,12 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () {
                     _flutterPlugins.pointerException();
                   },
-                  child: const Text("程序崩溃"))
+                  child: const Text("程序崩溃")),
+              ElevatedButton(
+                  onPressed: () async {
+                    _flutterPlugins.contactsPicker();
+                  },
+                  child: const Text("获取通信录"))
             ],
           ),
         ),

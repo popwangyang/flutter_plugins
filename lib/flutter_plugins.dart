@@ -86,6 +86,18 @@ class FlutterPlugins {
     _channel.invokeMethod("pointerException");
   }
 
+  Future<ContactsInfo?> contactsPicker() async {
+    if (Platform.isAndroid) {
+      var _r = await _channel.invokeMethod(
+        "contactsPicker",
+      );
+      if (_r != null) {
+        return ContactsInfo.fromJson(_r);
+      }
+    }
+    return null;
+  }
+
   Future<void> _handleMethod(MethodCall call) async {
     switch (call.method) {
       case 'selectNotification':

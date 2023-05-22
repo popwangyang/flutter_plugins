@@ -118,3 +118,22 @@ class EMASTlogger {
     return {"message": message, "module": module, "tag": tag};
   }
 }
+
+class ContactsInfo {
+  late final String name;
+  late final String phone;
+
+  ContactsInfo({required this.name, required this.phone});
+
+  ContactsInfo.fromJson(Map json) {
+    name = json['name'];
+    phone = json['phone'];
+  }
+
+  toJson() {
+    return {
+      "name": name,
+      "phone": phone,
+    };
+  }
+}

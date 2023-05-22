@@ -3,8 +3,14 @@ package com.example.flutter_plugins
 import android.app.Activity
 import android.app.Notification
 import android.content.*
+import android.content.pm.PackageManager
 import android.os.IBinder
+import android.provider.ContactsContract
 import android.util.Log
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ComponentActivity
+import androidx.core.content.ContextCompat
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -21,7 +27,6 @@ const val TGA = "flutterPluginsLog1"
 
 /** FlutterPluginsPlugin */
 class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.NewIntentListener,
-  PluginRegistry.RequestPermissionsResultListener,
   ActivityAware {
 
   private lateinit var channel : MethodChannel
@@ -32,6 +37,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
   private var notificationId: Int? = 0
   private var notification: Notification? = null
   private var emasTlog: EmasTlog? = null
+  private var contractPicker: ContactsPicker? = null
   private val connection = object : ServiceConnection {
 
     override fun onServiceConnected(p0: ComponentName, p1: IBinder) {
@@ -105,6 +111,9 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
         throw  NullPointerException()
       }
       call.method.startsWith("log") -> emasTlog?.log(call, result)
+      call.method == "contactsPicker" -> {
+        contractPicker!!.getContacts(result)
+      }
 
       else ->  result.notImplemented()
     }
@@ -119,6 +128,7 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
   }
 
   override fun onNewIntent(intent: Intent): Boolean {
+    Log.d(TGA, "onNewIntent")
     val res = sendNotificationPayloadMessage(intent)
     if(res && mainActivity != null) {
       mainActivity!!.intent = intent
@@ -138,18 +148,12 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
     return  false
   }
 
-  override fun onRequestPermissionsResult(
-    requestCode: Int,
-    permissions: Array<out String>?,
-    grantResults: IntArray?
-  ): Boolean {
-    return true
-  }
-
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     binding.addOnNewIntentListener(this);
-    binding.addRequestPermissionsResultListener(this);
     mainActivity = binding.activity;
+    contractPicker = ContactsPicker(binding.activity)
+    binding.addActivityResultListener(contractPicker!!);
+    binding.addRequestPermissionsResultListener(contractPicker!!);
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
@@ -158,7 +162,6 @@ class FlutterPluginsPlugin: FlutterPlugin, MethodCallHandler, PluginRegistry.New
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
     binding.addOnNewIntentListener(this);
-    binding.addRequestPermissionsResultListener(this);
     mainActivity = binding.activity;
   }
 
